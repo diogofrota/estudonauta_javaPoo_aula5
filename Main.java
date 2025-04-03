@@ -1,37 +1,23 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
-        Scanner sc =  new Scanner(System.in);
+        Conta p1 = new Conta();
+        p1.setNumConta(1111);
+        p1.setDono("Jubileu");
+        p1.abrirConta("CC");
 
-        System.out.println("sistema do banco x");
-        System.out.println("------------------");
-        System.out.println("1-abrir conta");
-        System.out.println("2-fazer deposito");
-        System.out.println("3-fazer um saque");
-        System.out.println("4-verificar saldo");
-        System.out.println("-----------------");
-        System.out.print("Escolha uma opcão: ");
-        String op = sc.next();
+        Conta p2 = new Conta();
+        p2.setNumConta(2222);
+        p2.setDono("Creuza");
+        p2.abrirConta("CP");
 
-        switch (op) {
-            case "1":
-                System.out.println("voce abriu uma conta");
-                break;
-            case "2":
-                System.out.println("Voce vai fazer um deposito");
-                break;
-            case "3":
-                System.out.println("Voce vai fazer um saque");
-                break;
-            case "4":
-                System.out.println("Voce vai verificar o saldo;");
-            default:
-                System.out.println("Escolha uma opcao correta");
-        }
+        p1.depositar(100);
+        p2.depositar(500);
 
-        sc.close();
+        p2.sacar(100);
+
+        p1.estadoatual();
+        p2.estadoatual();
 
 
     }

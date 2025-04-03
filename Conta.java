@@ -7,6 +7,16 @@ public class Conta {
     private double saldo;
     private boolean status;
 
+    public void estadoatual() {
+        System.out.println("-------------------------------");
+        System.out.println("Conta: " + this.getNumConta());
+        System.out.println("Conta: " + this.getTipo());
+        System.out.println("Conta: " + this.getDono());
+        System.out.println("Conta: " + this.getSaldo());
+        System.out.println("Conta: " + this.getStatus());
+    }
+
+
     public Conta() {
         this.saldo = 0;
         this.status = false;
@@ -20,22 +30,18 @@ public class Conta {
         this.setStatus(true);
 
         if (t.equals("CC")) {
-            this.saldo = 50;
+            this.setSaldo(50);
         } else if (t.equals("CP")) {
-            this.saldo = 150;
+            this.setSaldo(150);
         }
-
-        Conta cliente =  new Conta();
-        cliente.numConta = 1;
-        cliente.tipo = "CC";
     }
 
     public void fecharConta() {
-        if (this.saldo > 0) {
-            System.out.println("seu saldo é:" + this.saldo + "valor para saque");
-            this.saldo = this.saldo - this.saldo;
-        }else if (this.saldo < 0){
-            System.out.println("voce nào pode fechar essa conta!!!");
+        if (this.getSaldo() > 0) {
+            System.out.println("seu saldo é:" + this.saldo + "valor liberado para saque");
+            this.setSaldo(0);
+        }else if (this.getSaldo() < 0){
+            System.out.println("Voce não pode fechar essa conta!!!");
         } else {
             System.out.println("Conta Fechada!");
             this.setStatus(false);
@@ -43,8 +49,8 @@ public class Conta {
     }
 
     public double depositar(double d) {
-        if (this.status) {
-            this.saldo = this.saldo + d;
+        if (this.getStatus()) {
+            this.setSaldo(this.getSaldo() + d);
         } else {
             System.out.println("Impossivel depositar conta fechada!");
         }
@@ -52,8 +58,8 @@ public class Conta {
     }
 
     public double sacar(double s) {
-        if (this.status && this.saldo > s ) {
-            this.saldo = this.saldo - s;
+        if (this.getStatus() && this.getSaldo() > s ) {
+            this.setSaldo(this.getSaldo() - s);
         } else {
             System.out.println("Não é possivel fazer saque sem saldo!!!!");
         }
@@ -65,10 +71,10 @@ public class Conta {
         double tarifaCp = 20;
         double tarifaCc = 12;
 
-        if (this.tipo.equals("CC")) {
-            this.saldo = this.saldo - tarifaCc;
+        if (this.getTipo().equals("CC")) {
+            this.setSaldo(this.getSaldo() - tarifaCc);
         }else {
-            this.saldo = this.saldo - tarifaCp;
+            this.setSaldo(this.getSaldo() -tarifaCp);
         }
 
         return this.saldo;
