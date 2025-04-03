@@ -18,18 +18,12 @@ public class Main {
         switch (op) {
             case "1":
                 System.out.println("voce abriu uma conta");
-                Conta cliente =  new Conta();
-                cliente.numConta = 1;
-                cliente.tipo = "CC";
-                String dono;
-                cliente.setDono(dono);
                 break;
             case "2":
                 System.out.println("Voce vai fazer um deposito");
                 break;
             case "3":
                 System.out.println("Voce vai fazer um saque");
-
                 break;
             case "4":
                 System.out.println("Voce vai verificar o saldo;");
